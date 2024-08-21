@@ -10,15 +10,15 @@ function ButtonForm({ onSubmit }) {
     };
 
     return (
-        <Container className="container">
-            {!isSubmitted && ( // Only render the button if isSubmitted is false
+        !isSubmitted && ( // Only render the container if isSubmitted is false
+            <Container className="container">
                 <button className="continue-button"
                     onClick={handleSubmit}
                 >
                     Continue
                 </button>
-            )}
-        </Container>
+            </Container>
+        )
     );
 }
 

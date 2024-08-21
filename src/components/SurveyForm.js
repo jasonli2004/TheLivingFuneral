@@ -12,11 +12,12 @@ function SurveyForm({ onSubmit }) {
     const [hobby, setHobby] = useState('');
     const [contentWithLife, setContentWithLife] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false); // State to control visibility
-
+    const [isLoading, setIsLoading] = useState(false); // State to show loading message
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitted(true); // Hide the button after it's clicked
+        setIsLoading(true); // Show loading message
         onSubmit({
             funeralDate,
             weather,
@@ -141,12 +142,15 @@ function SurveyForm({ onSubmit }) {
                 </Form.Group>
 
                 {!isSubmitted && (
-                    <button
+                    <Button
                         className="submit-button"
                         type="submit"
                     >
                         Submit
-                    </button>
+                    </Button>
+                )}
+                {isLoading && (
+                    <p>Please wait...</p>
                 )}
             </Form>
         </Container>
