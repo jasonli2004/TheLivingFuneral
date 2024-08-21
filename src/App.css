@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --main-color: #f8d7a9;
+  --main-color-aug: hsl(45, 100%, 66%);
+  --font-color: #434242;
+}
+
+
+body {
+  background: linear-gradient(135deg, #f06, #aaf);
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--font-color);
+  text-align: center;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  color: #ffffff;
+}
+
+h3 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: var(--font-color);
+}
+
+.container-wrapper {
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+  margin: 0 10%;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  /* Adjust to control container width */
+  margin: 0 auto;
+  opacity: 0.8;
+  /* Center the container */
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+  .container-wrapper {
+    margin: 0 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-wrapper {
+    margin: 0 2%;
+  }
+}
+
+input,
+select,
+button {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+input,
+select {
+  background: rgba(131, 43, 43, 0.15);
+  color: #7d7d7d;
+  font-size: 1.1rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+
+.submit-button {
+  background-color: #b4b4b4;
+  color: #ffffff;
+  cursor: pointer;
+  min-width: 100px;
+  width: 20%;
+  font-size: 0.8rem;
+  opacity: 0.74;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--main-color);
+  transform: scale(1.05);
+}
+
+
+.continue-button {
+  background-color: #028c00;
+  color: #ffffff;
+  cursor: pointer;
+  min-width: 100px;
+  width: 20%;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.continue-button:hover {
+  background-color: #3fab3e;
+  transform: scale(1.05);
+}
+
+
+
+label {
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 12px;
+  color: var(--font-color);
+}
+
+#background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.App {
+  position: relative;
+  z-index: 1;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-field {
+  width: calc(100% - 40px);
+  /* Adjust the width to leave space on both sides */
+  margin: 10px 20px;
+  /* Adds space around the input field */
+  padding: 12px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #333;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  /* Ensure padding is included in width calculation */
+}
+
+
+
+/* Pronoun and Choice Options */
+.pronoun-options,
+.choice-options {
+  font-weight: bold;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pronoun-option,
+.choice-option {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  color: var(--font-color);
+}
+
+.pronoun-option::before,
+.choice-option::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pronoun-option:hover::before,
+.choice-option:hover::before {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+}
+
+.credit {
+  font-size: 0.95rem;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.pronoun-option:hover,
+.choice-option:hover {
+  background-color: var(--main-color);
+  color: white;
+  animation: wave 0.5s ease 2;
+}
+
+.selected {
+  background-color: var(--main-color-aug);
+  opacity: 1;
+  color: white;
+}
+
+#video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%) scale(1.5);
+  /* Adjust scale as needed */
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Wave Animation */
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+
+
+
+}
