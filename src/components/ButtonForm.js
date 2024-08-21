@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 function ButtonForm({ onSubmit }) {
     const [isSubmitted, setIsSubmitted] = useState(false); // State to control visibility
@@ -11,11 +11,13 @@ function ButtonForm({ onSubmit }) {
 
     return (
         <Container className="container">
-            <button class="continue-button"
-                onClick={handleSubmit}
-            >
-                Continue
-            </button >
+            {!isSubmitted && ( // Only render the button if isSubmitted is false
+                <button className="continue-button"
+                    onClick={handleSubmit}
+                >
+                    Continue
+                </button>
+            )}
         </Container>
     );
 }
