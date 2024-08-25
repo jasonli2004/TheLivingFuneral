@@ -46,8 +46,8 @@ function App() {
       await playAudio("choice.mp3");
     } else if (step === 3) {
       const choiceAudioText = newUserData.choice === 'die'
-        ? `You chose to die tomorrow. Although this is quite unlikely, but You never know which will come first: your tomorrow, or your end..... We all gonna die. But, for you, ${newUserData.name}, you are going to die 'tomorrow'. Yes TOMORROW. Now you have 24 hours before you die tomorrow.`
-        : `You chose to live forever. While living forever might seem desirable, the fact is that you can’t live forever, at least it’s not possible with the technology we have now. So death is inevitable, and you are going to die. And ${newUserData.name}, you are going to die 'Tomorrow'.`;
+        ? `You chose to die tomorrow. Although this is quite unlikely, but you never know which will come first: your tomorrow, or your end... We all gonna die. But, for you, ${newUserData.name}, you are going to die 'tomorrow'. Yes, TOMORROW. Now you have 24 hours before you die tomorrow.`
+        : `You chose to live forever. While living forever might seem desirable, the fact is that you can’t live forever, at least not with the technology we have now. So death is inevitable, and you are going to die. And ${newUserData.name}, you are going to die 'Tomorrow'.`;
       await generateAndPlayAudio(choiceAudioText, newUserData.choice === 'die' ? "die.mp3" : "live.mp3");
       await playAudio("last.mp3");
     } else if (step === 4) {
@@ -58,8 +58,7 @@ function App() {
         "passed.mp3"
       );
       await playAudio("survey.mp3");
-    }
-    else if (step === 6) {
+    } else if (step === 6) {
       const prompt = `
 I'm doing an interactive art project titled "The Living Funeral," which aims to simulate a funeral for a person who's still alive to provoke thoughts. Please write a 300-word, personalized, creative, and deeply touching eulogy using the following information about a participant. Use the favorite number section to randomly decide a random way for this person to die. Make the eulogy reflective of their life, values, and choices:
 Name: ${newUserData.name}
@@ -84,8 +83,7 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
       await playAudio("complete.mp3");
       await playAudio("thank.mp3");
       await playAudio("baby_cry.mp3");
-    }
-    else if (step === 8) {
+    } else if (step === 8) {
       console.log(`${newUserData.consent}`);
     }
 
@@ -179,16 +177,16 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
         <iframe
           id="background-video"
           src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0"
-          frameborder="0"
+          frameBorder="0"
           allow="autoplay; encrypted-media"
-          allowfullscreen
-          playsinline
+          allowFullScreen
+          playsInline
         ></iframe>
       </div>
       {step === 0 && (
         <Container>
           <h3>Welcome to The Living Funeral</h3>
-          <button className="submit-button " onClick={handleStart}>
+          <button className="submit-button" onClick={handleStart}>
             Start
           </button>
         </Container>
@@ -210,7 +208,6 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
       )}
       <img src="favicon.ico" alt="logo" id="logo" />
       <Timer />  {/* Timer component will appear in the top right corner */}
-
     </div>
   );
 }
