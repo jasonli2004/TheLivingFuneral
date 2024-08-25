@@ -110,7 +110,7 @@ function SurveyForm({ onSubmit }) {
                     <Form.Control
                         type="text"
                         className="input-field"
-                        placeholder="Enter an object that represents you"
+                        placeholder="object that represents you"
                         value={representativeObject}
                         onChange={(e) => setRepresentativeObject(e.target.value)}
                     />

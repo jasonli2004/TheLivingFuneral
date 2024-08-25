@@ -12,6 +12,7 @@ import ThankYouComponent from './components/ThankYou';
 import './App.css';
 import { getChatCompletion } from './openaiService';  // Import the function
 import { Container } from 'react-bootstrap';
+import ConsentForm from './components/ConsentForm';
 
 function App() {
   const [step, setStep] = useState(0);
@@ -102,6 +103,9 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
       await playAudio("complete.mp3");
       await playAudio("thank.mp3");
       await playAudio("baby_cry.mp3");
+    }
+    else if (step === 8) {
+      console.log(`${newUserData.consent}`);
     }
 
     setStep((prevStep) => prevStep + 1); // Move to the next step
@@ -263,7 +267,9 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
           {step === 6 && <SurveyForm onSubmit={handleNextStep} />}
           {/* {step === 8 && <BrowserComponent onReady={handleNextStep} />} */}
           {step === 7 && <LastWordsForm onSubmit={handleNextStep} />}
-          {step === 8 && <ThankYouComponent onRestart={() => setStep(0)} />}
+          {step === 8 && <ConsentForm onSubmit={handleNextStep} />}
+
+          {step === 9 && <ThankYouComponent onRestart={() => setStep(0)} />}
         </>
       )}
     </div>
