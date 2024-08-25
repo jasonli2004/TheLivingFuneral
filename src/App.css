@@ -252,6 +252,15 @@ label {
   pointer-events: none;
 }
 
+#logo {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+  width: 4%;
+  opacity: 0.7;
+}
+
 /* Wave Animation */
 @keyframes wave {
 

@@ -13,13 +13,25 @@ import './App.css';
 import { getChatCompletion } from './openaiService';  // Import the function
 import { Container } from 'react-bootstrap';
 import ConsentForm from './components/ConsentForm';
+import Timer from './components/Timer';
 
 function App() {
   const [step, setStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [backgroundAudio, setBackgroundAudio] = useState(null);
+  const [tickAudio, setTickAudio] = useState(null);
   const [userData, setUserData] = useState({});
   const [scriptAudio, setScriptAudio] = useState(null);
+  const [value, setValue] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setValue(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    initAudio(); // Initialize audio on page load
+  }, []);
 
   const handleNextStep = async (data) => {
     const newUserData = { ...userData, ...data }; // Merge current data with new data
@@ -67,37 +79,6 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
       const result = await getChatCompletion(prompt);
 
       await generateAndPlayAudio(result, "eulogy.mp3");
-
-
-      // await generateAndPlayAudio(
-      //   `Ladies and Gentlemen, on this ${newUserData.weather} morning of ${newUserData.funeralDate}, we gathered here to remember and celebrate the life of ${newUserData.name}, who touched the lives of so many. We come together in grief, acknowledging our human loss, but also in gratitude for the life that ${newUserData.p1} lived.`,
-      //   "passed.mp3"
-      // );
-      // await play7Way();
-      // await generateAndPlayAudio(
-      //   `${newUserData.name} asked me to share a quote with you on this very special moment: the quote goes as this: ${newUserData.quote}`,
-      //   'quote.mp3'
-      // );
-      // if (newUserData.natureElement === "Wind") {
-      //   await generateAndPlayAudio(
-      //     `If you think about ${newUserData.name} in the future, and decide to wander, know that ${newUserData.p1} will be nestled within nature's embrace, playfully peeking from the rustling leaves or dancing upon the sunlit streams.`,
-      //     'wind.mp3'
-      //   );
-      // } else {
-      //   await generateAndPlayAudio(
-      //     `Dear friends and families, if you ever miss ${newUserData.name}, just seek out a ${newUserData.representativeObject}. No matter when and where, ${newUserData.name} will always be there for you, in the gentle echo of your laughter and the soft shadows of your memories.`,
-      //     'object.mp3'
-      //   );
-      // }
-      // await generateAndPlayAudio(
-      //   `While ${newUserData.name} walked among us, ${userData.pronoun}'s favorite pastime was ${newUserData.hobby}, a pursuit that brought joy to ${newUserData.p2}'s days and light to those around ${newUserData.p3}.`,
-      //   'hobby.mp3'
-      // );
-      // await playContent();
-      // await generateAndPlayAudio(
-      //   `As we draw this gathering to a close, let us hold in our hearts the essence of ${newUserData.name}, who now takes a new journey beyond our sight. May we find solace in the love ${newUserData.p1} shared, the paths ${newUserData.p1} walked alongside us, and the indelible mark ${newUserData.p1} left on our lives. In the tapestry of memory, ${newUserData.p1} remains an eternal thread, vibrant and strong. As we walk forth from this place, let each of us carry a spark of ${newUserData.p2} spirit, igniting it in acts of kindness, in laughter shared, and in moments of quiet reflection. ${newUserData.p2}'s story, though paused in the telling, continues within us all.`,
-      //   "conclude.mp3"
-      // );
       await playAudio("lastword.mp3");
     } else if (step === 7) {
       await playAudio("complete.mp3");
@@ -112,6 +93,10 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
   };
 
   const handleStart = () => {
+    setStep(1);
+  };
+
+  const initAudio = () => {
     const bgAudio = new Audio('/audio/rain_short.mp3');
     bgAudio.loop = true;
     bgAudio.volume = 0.65;
@@ -119,64 +104,17 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
       console.error("Failed to play background audio:", error);
     });
 
+    const tickAudio = new Audio('/audio/tick.mp3');
+    tickAudio.loop = true;
+    tickAudio.volume = 0.6;
+    tickAudio.play().catch((error) => {
+      console.error("Failed to play tick audio:", error);
+    });
+
     setBackgroundAudio(bgAudio);
+    setTickAudio(tickAudio);
     setIsPlaying(true);
-    setStep(1);
-  };
-
-  const play7Way = async () => {
-    const favoriteNumber = parseFloat(userData.favoriteNumber) % 6;
-
-    switch (favoriteNumber) {
-      case 1:
-        playAudio('option1.mp3');
-        break;
-      case 2:
-        playAudio('option2.mp3');
-        break;
-      case 3:
-        await generateAndPlayAudio(
-          `On the 19th of November, 2023, the wind that brought ${userData.name} to the world, brought ${userData.p3} away. ${userData.p1} escaped the earth successfully, free from the mortal tether.`,
-          'option3.mp3'
-        );
-        break;
-      case 4:
-        await generateAndPlayAudio(
-          `On the 19th of November, 2023, our dear friend ${userData.name}, was at the helm of ${userData.p2} cherished car, the hum of the engine a familiar comfort. Tragedy struck in an instant of unforeseen bravery—${userData.p1} departed from this life in a selfless act, veering away to protect a life just beginning, as a baby emerged onto the roadway. ${userData.p2}'s final act, one of instinctive compassion, leaves us in a wake of heartbreak and awe at the profound depth of ${userData.p2}'s character.`,
-          'option4.mp3'
-        );
-        break;
-      case 5:
-        await generateAndPlayAudio(
-          `On the 19th of November, 2023, our dear friend ${userData.name}, while descending the familiar staircase, met with an untimely fate. ${userData.p2}'s foot faltered, and ${userData.p2}'s journey ended in sudden stillness, leaving us to ponder the fragility of life with each step we take.`,
-          'option5.mp3'
-        );
-        break;
-      default:
-        await generateAndPlayAudio(
-          `On the 19th of November, 2023, our dear friend ${userData.name}, while embracing the azure embrace of the ocean, succumbed to its enigmatic depths. ${userData.p2}'s spirit, now unbound, swims with the currents of eternity, leaving us to navigate the tides of grief and memory in ${userData.p3}'s wake.`,
-          'option6.mp3'
-        );
-        break;
-    }
-  };
-
-  const playContent = async () => {
-    const result = userData.contentWithLife;
-
-    if (result === "Yes") {
-      await generateAndPlayAudio(
-        `Although ${userData.p1} never becomes the most famous or the wealthiest, ${userData.p1} pursued ${userData.p2}'s goals: ${userData.wish1}, ${userData.wish2}, ${userData.wish3}, with quiet dedication. The extent of ${userData.p2}'s progress on these paths may remain unknown to us, yet ${userData.p1} found richness in the simple pleasures of life. Content with ${userData.p2}'s lot, ${userData.p1} heartily embraced the joys of living, delighting in gastronomy and merriment, exploring the splendor of nature, and fostering deep bonds with a circle of steadfast and loyal friends.`,
-        'happy.mp3'
-      );
-    } else {
-      await generateAndPlayAudio(
-        `A lot of people are always so busy…. busy drinking, busy making money, and busy having emotional crises. A lot of time passed in this busy way. However, ${userData.p1} carried within ${userData.p3} a restless yearning for ${userData.p2}'s goals of ${userData.wish1}, ${userData.wish2}, ${userData.wish3}. The dreams ${userData.p1} chased, with fervor and silent resolve, remain unfinished symphonies, their melodies hanging in the balance of what could have been. Despite this, ${userData.p1} never ceased to engage with the world ardently, seeking joy in the vibrant tapestry of life, from the simplest of pleasures to the grandest of adventures, and forging bonds with those few who truly understood the tempest of ${userData.p2}'s spirit.`,
-        'sad.mp3'
-      );
-    }
-  };
-
+  }
 
   const generateAndPlayAudio = async (textPrompt, fileName) => {
     try {
@@ -223,32 +161,31 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
         scriptAudio.pause();
         scriptAudio.currentTime = 0;
       }
+      if (backgroundAudio) {
+        backgroundAudio.pause();
+        backgroundAudio.currentTime = 0;
+      }
+      if (tickAudio) {
+        tickAudio.pause();
+        tickAudio.currentTime = 0;
+      }
     };
-  }, [scriptAudio]);
-
-  // useEffect(() => {
-  //   // if (step === 8 && backgroundAudio) {
-  //   //   backgroundAudio.pause();
-  //   //   backgroundAudio.currentTime = 0;
-  //   // }
-
-  //   return () => {
-  //     if (backgroundAudio && step === 8) {
-  //       backgroundAudio.pause();
-  //       backgroundAudio.currentTime = 0;
-  //     }
-  //   };
-  // }, [backgroundAudio, step]);
+  }, [scriptAudio, backgroundAudio, tickAudio]);
 
   return (
     <div className="App">
       <p className='credit'>Video Credit: Mellow Psychedelic Journey - Calming & Beautiful, Good For You.</p>
       <div id="video-container">
-        <iframe id="background-video" src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe
+          id="background-video"
+          src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          playsInline
+        ></iframe>
       </div>
-
-
-      {!isPlaying && step === 0 && (
+      {step === 0 && (
         <Container>
           <h3>Welcome to The Living Funeral</h3>
           <button className="submit-button " onClick={handleStart}>
@@ -265,16 +202,17 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
           {step === 4 && <Last24Form onSubmit={handleNextStep} />}
           {step === 5 && <ButtonForm onSubmit={handleNextStep} />}
           {step === 6 && <SurveyForm onSubmit={handleNextStep} />}
-          {/* {step === 8 && <BrowserComponent onReady={handleNextStep} />} */}
           {step === 7 && <LastWordsForm onSubmit={handleNextStep} />}
           {step === 8 && <ConsentForm onSubmit={handleNextStep} />}
 
           {step === 9 && <ThankYouComponent onRestart={() => setStep(0)} />}
         </>
       )}
+      <img src="favicon.ico" alt="logo" id="logo" />
+      <Timer />  {/* Timer component will appear in the top right corner */}
+
     </div>
   );
 }
 
 export default App;
-

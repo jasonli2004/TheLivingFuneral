@@ -13,7 +13,7 @@ function ThreeWishesForm({ onSubmit }) {
 
     return (
         <Container className="container">
-            <h3>Three Most Important Things in Your Life</h3>
+            <h4>Three Most Important Things in Your Life</h4>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>First Thing:</label>
