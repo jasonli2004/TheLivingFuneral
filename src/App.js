@@ -15,6 +15,7 @@ import { Container } from 'react-bootstrap';
 import ConsentForm from './components/ConsentForm';
 import Timer from './components/Timer';
 
+
 function App() {
   const [step, setStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,11 +27,8 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => setValue(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
 
-  useEffect(() => {
-    initAudio(); // Initialize audio on page load
+    return () => clearInterval(interval);
   }, []);
 
   const handleNextStep = async (data) => {
@@ -93,10 +91,6 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
   };
 
   const handleStart = () => {
-    setStep(1);
-  };
-
-  const initAudio = () => {
     const bgAudio = new Audio('/audio/rain_short.mp3');
     bgAudio.loop = true;
     bgAudio.volume = 0.65;
@@ -114,7 +108,8 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     setBackgroundAudio(bgAudio);
     setTickAudio(tickAudio);
     setIsPlaying(true);
-  }
+    setStep(0);
+  };
 
   const generateAndPlayAudio = async (textPrompt, fileName) => {
     try {
@@ -178,7 +173,8 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
       <div id="video-container">
         <iframe id="background-video" src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
-      {step === 0 && (
+
+      {!isPlaying && step === 0 && (
         <Container>
           <h3>Welcome to The Living Funeral</h3>
           <button className="submit-button " onClick={handleStart}>
@@ -195,6 +191,7 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
           {step === 4 && <Last24Form onSubmit={handleNextStep} />}
           {step === 5 && <ButtonForm onSubmit={handleNextStep} />}
           {step === 6 && <SurveyForm onSubmit={handleNextStep} />}
+          {/* {step === 8 && <BrowserComponent onReady={handleNextStep} />} */}
           {step === 7 && <LastWordsForm onSubmit={handleNextStep} />}
           {step === 8 && <ConsentForm onSubmit={handleNextStep} />}
 
@@ -202,6 +199,7 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
         </>
       )}
       <img src="favicon.ico" alt="logo" id="logo" />
+
       <Timer />  {/* Timer component will appear in the top right corner */}
     </div>
   );
