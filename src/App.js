@@ -149,23 +149,23 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     });
   };
 
-  useEffect(() => {
-    // Clean up script audio when it finishes or component unmounts
-    return () => {
-      if (scriptAudio) {
-        scriptAudio.pause();
-        scriptAudio.currentTime = 0;
-      }
-      if (backgroundAudio) {
-        backgroundAudio.pause();
-        backgroundAudio.currentTime = 0;
-      }
-      if (tickAudio) {
-        tickAudio.pause();
-        tickAudio.currentTime = 0;
-      }
-    };
-  }, [scriptAudio, backgroundAudio, tickAudio]);
+  // useEffect(() => {
+  //   // Clean up script audio when it finishes or component unmounts
+  //   return () => {
+  //     if (scriptAudio) {
+  //       scriptAudio.pause();
+  //       scriptAudio.currentTime = 0;
+  //     }
+  //     if (backgroundAudio) {
+  //       backgroundAudio.pause();
+  //       backgroundAudio.currentTime = 0;
+  //     }
+  //     if (tickAudio) {
+  //       tickAudio.pause();
+  //       tickAudio.currentTime = 0;
+  //     }
+  //   };
+  // }, [scriptAudio, backgroundAudio, tickAudio]);
 
   return (
     <div className="App">
