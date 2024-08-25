@@ -15,6 +15,23 @@ import { Container } from 'react-bootstrap';
 import ConsentForm from './components/ConsentForm';
 import Timer from './components/Timer';
 
+const EmbedVideo = ({ src, className }) => {
+  return (
+    <div dangerouslySetInnerHTML={{
+      __html: `
+      <video
+        loop
+        muted
+        autoplay
+        playsinline
+        src="${src}"
+        class="${className}"
+        type="video/mp4"
+      />
+    ` }}></div>
+  );
+}
+
 function App() {
   const [step, setStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -174,14 +191,10 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     <div className="App">
       <p className='credit'>Video Credit: Mellow Psychedelic Journey - Calming & Beautiful, Good For You.</p>
       <div id="video-container">
-        <iframe
-          id="background-video"
-          src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          playsInline
-        ></iframe>
+        <EmbedVideo
+          src="https://www.youtube.com/embed/ICmWwxaTmB8"
+          className="background-video"
+        />
       </div>
       {step === 0 && (
         <Container>
