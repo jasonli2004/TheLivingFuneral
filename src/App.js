@@ -179,10 +179,10 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
         <iframe
           id="background-video"
           src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0"
-          frameBorder="0"
+          frameborder="0"
           allow="autoplay; encrypted-media"
-          allowFullScreen
-          playsInline
+          allowfullscreen
+          playsinline
         ></iframe>
       </div>
       {step === 0 && (
