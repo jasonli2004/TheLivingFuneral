@@ -13,12 +13,12 @@ function ThankYouComponent({ onRestart }) {
             <p>
                 We’re always here for you. For questions or comments, please email us at lil4@carleton.edu.
             </p>
-            {/* <button
+            <button
                 className="submit-button"
                 onClick={onRestart}
             >
                 Restart
-            </button> */}
+            </button>
         </Container>
     );
 }

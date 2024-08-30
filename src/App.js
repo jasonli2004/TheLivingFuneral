@@ -14,6 +14,7 @@ import { getChatCompletion } from './openaiService';  // Import the function
 import { Container } from 'react-bootstrap';
 import ConsentForm from './components/ConsentForm';
 import Timer from './components/Timer';
+import PoemComponent from './components/PoemComponent';
 
 
 function App() {
@@ -108,7 +109,7 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     setBackgroundAudio(bgAudio);
     setTickAudio(tickAudio);
     setIsPlaying(true);
-    setStep(1);
+    setStep(8);
   };
 
   const generateAndPlayAudio = async (textPrompt, fileName) => {
@@ -177,8 +178,9 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
           {/* {step === 8 && <BrowserComponent onReady={handleNextStep} />} */}
           {step === 7 && <LastWordsForm onSubmit={handleNextStep} />}
           {step === 8 && <ConsentForm onSubmit={handleNextStep} />}
+          {step === 9 && <PoemComponent onClick={handleNextStep} />}
+          {step === 10 && <ThankYouComponent onRestart={() => { setStep(0); setIsPlaying(false); }} />}
 
-          {step === 9 && <ThankYouComponent onRestart={() => setStep(0)} />}
         </>
       )}
       <img src="favicon.ico" alt="logo" id="logo" />
