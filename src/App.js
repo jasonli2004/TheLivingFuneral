@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'; // Import Router and related components
 import IntroForm from './components/IntroForm';
 import ThreeWishesForm from './components/ThreeWishesForm';
 import ChoiceForm from './components/ChoiceForm';
@@ -15,6 +16,7 @@ import { Container } from 'react-bootstrap';
 import ConsentForm from './components/ConsentForm';
 import Timer from './components/Timer';
 import PoemComponent from './components/PoemComponent';
+import WordGallery from './components/WordGallery';
 
 
 function App() {
@@ -25,12 +27,19 @@ function App() {
   const [userData, setUserData] = useState({});
   const [scriptAudio, setScriptAudio] = useState(null);
   const [value, setValue] = useState(new Date());
+  const navigate = useNavigate(); // Move the useNavigate hook here
+
 
   useEffect(() => {
     const interval = setInterval(() => setValue(new Date()), 1000);
 
     return () => clearInterval(interval);
   }, []);
+
+
+  const handleGalleryClick = () => {
+    navigate('/gallery'); // Use navigate here
+  };
 
   const handleNextStep = async (data) => {
     const newUserData = { ...userData, ...data }; // Merge current data with new data
@@ -109,7 +118,7 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     setBackgroundAudio(bgAudio);
     setTickAudio(tickAudio);
     setIsPlaying(true);
-    setStep(8);
+    setStep(1);
   };
 
   const generateAndPlayAudio = async (textPrompt, fileName) => {
@@ -155,16 +164,16 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     <div className="App">
       <p className='credit'>Video Credit: Mellow Psychedelic Journey - Calming & Beautiful, Good For You.</p>
       <div id="video-container">
-        <iframe id="background-video" src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe id="background-video" src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
       </div>
 
       {!isPlaying && step === 0 && (
-        <Container>
+        <div>
           <h3>Welcome to The Living Funeral</h3>
-          <button className="submit-button " onClick={handleStart}>
+          <button className="submit-button" onClick={handleStart}>
             Start
           </button>
-        </Container>
+        </div>
       )}
 
       {(isPlaying || step !== 0) && (
@@ -175,19 +184,33 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
           {step === 4 && <Last24Form onSubmit={handleNextStep} />}
           {step === 5 && <ButtonForm onSubmit={handleNextStep} />}
           {step === 6 && <SurveyForm onSubmit={handleNextStep} />}
-          {/* {step === 8 && <BrowserComponent onReady={handleNextStep} />} */}
           {step === 7 && <LastWordsForm onSubmit={handleNextStep} />}
           {step === 8 && <ConsentForm onSubmit={handleNextStep} />}
-          {step === 9 && <PoemComponent onClick={handleNextStep} />}
+          {step === 9 && <WordGallery />}
           {step === 10 && <ThankYouComponent onRestart={() => { setStep(0); setIsPlaying(false); }} />}
-
         </>
       )}
-      <img src="favicon.ico" alt="logo" id="logo" />
 
-      <Timer />  {/* Timer component will appear in the top right corner */}
+      <img src="favicon.ico" alt="logo" id="logo" />
+      <div id="gallery" onClick={handleGalleryClick}>
+        <img src="mona-lisa.png" alt="gallery icon" id="galleryIcon" />
+        <p id="galleryText">24hr Gallery</p>
+      </div>
+      <Timer />
     </div>
   );
 }
 
-export default App;
+function AppWrapper() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/gallery" element={<WordGallery />} />
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>
+  );
+}
+
+export default AppWrapper;

@@ -1,0 +1,143 @@
+/* Add Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@400;700&display=swap');
+
+.word-gallery-container {
+    padding: 50px;
+    background: linear-gradient(135deg, #8da7e1 0%, #194ec1 100%);
+    box-shadow: 0 10px 30px rgba(255, 224, 224, 0.2);
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 40px;
+    color: #ffffff;
+    margin-bottom: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 2s ease-out;
+    position: relative;
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
+}
+
+.answers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.answer-card {
+    background: rgba(216, 216, 216, 0.175);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    width: 220px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out, background 0.6s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #333;
+    line-height: 1.5;
+    text-align: center;
+    transform-origin: center;
+}
+
+.answer-card:hover {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #1338a6 0%, #1338a6 100%);
+}
+
+.answer-card:nth-child(odd) {
+    transform: rotate(-3deg);
+}
+
+.answer-card:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.answer-card p {
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-weight: bold;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Background Animation */
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 20%, transparent 70%);
+    animation: moveBackground 10s infinite linear;
+}
+
+/* Add this to WordGallery.css */
+.return-button {
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 2;
+}
+
+.return-button:hover {
+    background-color: #fbc2eb;
+    color: #fff;
+}
+
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 1000px 1000px;
+    }
+}

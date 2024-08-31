@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './PoemComponent.css'; // Ensure you create this CSS file for styling
-import { Container } from 'react-bootstrap';
 
 const PoemComponent = ({ onClick }) => {
     const [isVisible, setIsVisible] = useState(true);
@@ -13,7 +12,7 @@ const PoemComponent = ({ onClick }) => {
     if (!isVisible) return null;
 
     return (
-        <Container>
+        <div className="poem-container"> {/* Changed from Container to div */}
             <h2>Facing the Sea With Spring Blossoms</h2>
             <p>- Hai Zi</p>
             <p>From tomorrow on, I will be a happy man.<br />
@@ -31,7 +30,7 @@ const PoemComponent = ({ onClick }) => {
                 May you enjoy happiness in this earthly world!<br />
                 I only wish to face the sea, with spring blossoms.</p>
             <button className="submit-button" onClick={handleClose}>Next</button>
-        </Container>
+        </div>
     );
 };
 
