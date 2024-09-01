@@ -44,7 +44,8 @@ const WordGallery = () => {
                 ))}
             </div>
             <div className="background-animation"></div>
-            <button className="return-button" onClick={handleReturn}>Return to Home</button>
+            <img src="left-arrow.png" className="return-button" onClick={handleReturn} />
+            {/* <button className="return-button" onClick={handleReturn}>Back</button> */}
         </div>
     );
 };

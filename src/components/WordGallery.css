@@ -114,21 +114,25 @@ h2 {
 
 /* Add this to WordGallery.css */
 .return-button {
-    background-color: #ffffff;
+    position: absolute;
+    /* background-color: #ffffff; */
     color: #333;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 18px;
+    /* padding: 10px 20px; */
+    font-size: 13px;
     cursor: pointer;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    top: 1%;
+    left: 1%;
+    width: 3%;
     transition: background-color 0.3s ease, color 0.3s ease;
     z-index: 2;
 }
 
 .return-button:hover {
-    background-color: #fbc2eb;
-    color: #fff;
+    /* background-color: #fcc96c;
+    color: #fff; */
 }
 
 

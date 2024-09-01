@@ -118,7 +118,7 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     setBackgroundAudio(bgAudio);
     setTickAudio(tickAudio);
     setIsPlaying(true);
-    setStep(1);
+    setStep(0);
   };
 
   const generateAndPlayAudio = async (textPrompt, fileName) => {
@@ -173,7 +173,12 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
           <button className="submit-button" onClick={handleStart}>
             Start
           </button>
+          <div id="gallery" onClick={handleGalleryClick}>
+            <img src="mona-lisa.png" alt="gallery icon" id="galleryIcon" />
+            <p id="galleryText">24hr Gallery</p>
+          </div>
         </div>
+
       )}
 
       {(isPlaying || step !== 0) && (
@@ -186,16 +191,23 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
           {step === 6 && <SurveyForm onSubmit={handleNextStep} />}
           {step === 7 && <LastWordsForm onSubmit={handleNextStep} />}
           {step === 8 && <ConsentForm onSubmit={handleNextStep} />}
-          {step === 9 && <WordGallery />}
-          {step === 10 && <ThankYouComponent onRestart={() => { setStep(0); setIsPlaying(false); }} />}
+          {step === 9 && (
+            <>
+              <ThankYouComponent onRestart={() => {
+                setStep(0);
+                setIsPlaying(false);
+              }} />
+              <div id="gallery" onClick={handleGalleryClick}>
+                <img src="mona-lisa.png" alt="gallery icon" id="galleryIcon" />
+                <p id="galleryText">24hr Gallery</p>
+              </div>
+            </>
+          )}
+
         </>
       )}
 
       <img src="favicon.ico" alt="logo" id="logo" />
-      <div id="gallery" onClick={handleGalleryClick}>
-        <img src="mona-lisa.png" alt="gallery icon" id="galleryIcon" />
-        <p id="galleryText">24hr Gallery</p>
-      </div>
       <Timer />
     </div>
   );
