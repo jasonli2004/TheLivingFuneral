@@ -118,7 +118,7 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     setBackgroundAudio(bgAudio);
     setTickAudio(tickAudio);
     setIsPlaying(true);
-    setStep(0);
+    setStep(1);
   };
 
   const generateAndPlayAudio = async (textPrompt, fileName) => {
