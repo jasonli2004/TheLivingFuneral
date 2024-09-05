@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './WordGallery.css';
 
 const WordGallery = () => {
     const navigate = useNavigate();
+    const [lines, setLines] = useState([]);
+
+    useEffect(() => {
+        // Fetch data from the server when the component is mounted
+        fetch('http://localhost:5001/get-answers') // Adjust the URL if your backend is running on a different port or server
+            .then((response) => response.json())
+            .then((data) => setLines(data))
+            .catch((error) => console.error('Error fetching the lines:', error));
+    }, []);
 
     const handleReturn = () => {
         navigate('/');
@@ -37,15 +46,20 @@ const WordGallery = () => {
         <div className="word-gallery-container">
             <h2>What Will You Do in the Last 24 Hours of Your Life?</h2>
             <div className="answers-container">
-                {hardcodedAnswers.map((answer, index) => (
+                {/* Render fetched answers if available, otherwise display hardcoded answers */}
+                {(lines.length > 0 ? lines : hardcodedAnswers).map((answer, index) => (
                     <div key={index} className={`answer-card card-${index % 4}`}>
                         <p>{answer}</p>
                     </div>
                 ))}
             </div>
             <div className="background-animation"></div>
-            <img src="left-arrow.png" className="return-button" onClick={handleReturn} />
-            {/* <button className="return-button" onClick={handleReturn}>Back</button> */}
+            <img
+                src="left-arrow.png"
+                alt="Return"
+                className="return-button"
+                onClick={handleReturn}
+            />
         </div>
     );
 };

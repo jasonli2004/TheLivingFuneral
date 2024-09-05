@@ -69,21 +69,21 @@ function App() {
     }
     else if (step === 6) {
       const prompt = `
-I'm doing an interactive art project titled "The Living Funeral," which aims to simulate a funeral for a person who's still alive to provoke thoughts. Please write a 300-word, personalized, creative, and deeply touching eulogy using the following information about a participant. Use the favorite number section to randomly decide a random way for this person to die. Make the eulogy reflective of their life, values, and choices:
-Name: ${newUserData.name}
-Pronoun: ${newUserData.pronoun}
-Three most important things in their life: ${newUserData.threeMostImportantThings}
-A quote they want to deliver at their funeral: "${newUserData.quote}"
-Age: ${newUserData.age}
-Preferred funeral date: ${newUserData.funeralDate}
-Preferred funeral weather: ${newUserData.weather}
-Favorite number: ${newUserData.favoriteNumber}
-A nature element they chose: ${newUserData.natureElement}
-An object that represents them: ${newUserData.representativeObject}
-Favorite hobby: ${newUserData.hobby}
-Are they content with their life?: ${newUserData.contentWithLife}
-Incorporate these elements creatively and make the eulogy deeply personal and touching. (no need for a title)
-`;
+      I'm doing an interactive art project titled "The Living Funeral," which aims to simulate a funeral for a person who's still alive to provoke thoughts. Please write a 300-word, personalized, creative, and deeply touching eulogy using the following information about a participant. Use the favorite number section to randomly decide a random way for this person to die. Make the eulogy reflective of their life, values, and choices:
+      Name: ${newUserData.name}
+      Pronoun: ${newUserData.pronoun}
+      Three most important things in their life: ${newUserData.threeMostImportantThings}
+      A quote they want to deliver at their funeral: "${newUserData.quote}"
+      Age: ${newUserData.age}
+      Preferred funeral date: ${newUserData.funeralDate}
+      Preferred funeral weather: ${newUserData.weather}
+      Favorite number: ${newUserData.favoriteNumber}
+      A nature element they chose: ${newUserData.natureElement}
+      An object that represents them: ${newUserData.representativeObject}
+      Favorite hobby: ${newUserData.hobby}
+      Are they content with their life?: ${newUserData.contentWithLife}
+      Incorporate these elements creatively and make the eulogy deeply personal and touching. (no need for a title)
+      `;
       const result = await getChatCompletion(prompt);
 
       await generateAndPlayAudio(result, "eulogy.mp3");
@@ -95,6 +95,66 @@ Incorporate these elements creatively and make the eulogy deeply personal and to
     }
     else if (step === 8) {
       console.log(`${newUserData.consent}`);
+      if (newUserData.consent === "Yes") {
+        // Make a POST request to append lines to the file
+        fetch('http://localhost:5001/add-answers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ line: `${newUserData.secondThing}\n` }), // Send the current line
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Failed to add line');
+            }
+            return response.text();
+          })
+          .then((message) => {
+            console.log(message);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        fetch('http://localhost:5001/add-answers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ line: `${newUserData.firstThing}\n` }), // Send the current line
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Failed to add line');
+            }
+            return response.text();
+          })
+          .then((message) => {
+            console.log(message);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        fetch('http://localhost:5001/add-answers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ line: `${newUserData.thirdThing}\n` }), // Send the current line
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Failed to add line');
+            }
+            return response.text();
+          })
+          .then((message) => {
+            console.log(message);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
     }
 
     setStep((prevStep) => prevStep + 1); // Move to the next step

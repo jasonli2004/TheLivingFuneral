@@ -64,6 +64,34 @@ app.get('/generate-audio', async (req, res) => {
 // Serve the audio files statically
 app.use('/audio', express.static(AUDIO_DIR));
 
+app.post('/add-answers', (req, res) => {
+    const { line } = req.body; // Expecting a single line from the request body
+    const filePath = path.join(__dirname, "Todolist.txt");
+    // Append the new line to the file
+    fs.appendFile(filePath, line, (err) => {
+        if (err) {
+            return res.status(500).send('Failed to append line to the file');
+        }
+        res.send('Line added successfully');
+    });
+});
+
+
+app.get('/get-answers', (req, res) => {
+    const filePath = path.join(__dirname, "Todolist.txt");
+
+    // Read the file and return the content as an array of lines
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            return res.status(500).send('Failed to read the file');
+        }
+
+        // Split the file contents into an array of lines
+        const linesArray = data.split('\n').filter(line => line.trim() !== ''); // Filter out any empty lines
+        res.json(linesArray);
+    });
+});
+
 // Start the server
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
