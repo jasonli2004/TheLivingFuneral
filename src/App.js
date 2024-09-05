@@ -170,6 +170,7 @@ function App() {
     const tickAudio = new Audio('/audio/tick.mp3');
     tickAudio.loop = true;
     tickAudio.volume = 0.6;
+    //
     tickAudio.play().catch((error) => {
       console.error("Failed to play tick audio:", error);
     });
