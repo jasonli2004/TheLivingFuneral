@@ -7,7 +7,6 @@ import ChoiceForm from './components/ChoiceForm';
 import Last24Form from './components/Last24Form';
 import ButtonForm from './components/ButtonForm';
 import SurveyForm from './components/SurveyForm';
-import BrowserComponent from './components/BrowserComponent';
 import LastWordsForm from './components/LastWordsForm';
 import ThankYouComponent from './components/ThankYou';
 import './App.css';
@@ -251,7 +250,9 @@ function App() {
           {step === 6 && <SurveyForm onSubmit={handleNextStep} />}
           {step === 7 && <LastWordsForm onSubmit={handleNextStep} />}
           {step === 8 && <ConsentForm onSubmit={handleNextStep} />}
-          {step === 9 && (
+          {step === 9 && <PoemComponent onClick={handleNextStep} />}
+
+          {step === 10 && (
             <>
               <ThankYouComponent onRestart={() => {
                 setStep(0);
