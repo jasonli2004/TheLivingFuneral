@@ -8,7 +8,7 @@ const WordGallery = () => {
 
     useEffect(() => {
         // Fetch data from the server when the component is mounted
-        fetch('http://localhost:5001/get-answers') // Adjust the URL if your backend is running on a different port or server
+        fetch('https://living-funeral-severless-backend-d8kdjcuyg.vercel.app/get-answers')
             .then((response) => response.json())
             .then((data) => setLines(data))
             .catch((error) => console.error('Error fetching the lines:', error));

@@ -134,7 +134,7 @@ function App() {
           .catch((error) => {
             console.error('Error:', error);
           });
-        fetch('http://localhost:5001/add-answers', {
+        fetch('https://the-living-funeral-backend.vercel.app:5001/add-answers', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -183,7 +183,7 @@ function App() {
 
   const generateAndPlayAudio = async (textPrompt, fileName) => {
     try {
-      const response = await axios.get('http://localhost:5001/generate-audio', {
+      const response = await axios.get('https://living-funeral-severless-backend-d8kdjcuyg.vercel.app/generate-audio', {
         params: { text_prompt: textPrompt, file_name: fileName },
         responseType: 'blob'
       });
@@ -199,6 +199,7 @@ function App() {
       console.error("Error generating audio:", error);
     }
   };
+
 
   const playAudio = async (fileName) => {
     const audio = new Audio(`/audio/${fileName}`);
