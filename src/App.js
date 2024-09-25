@@ -183,15 +183,15 @@ function App() {
 
   const generateAndPlayAudio = async (textPrompt, fileName) => {
     try {
-      const response = await axios.get('https://living-funeral-severless-backend-d8kdjcuyg.vercel.app/generate-audio', {
+      const response = await axios.get('https://livingfuneralnext.vercel.app/api/generate-audio', {
         params: { text_prompt: textPrompt, file_name: fileName },
-        responseType: 'blob'
+        responseType: 'blob' // Receive the audio as a blob
       });
-
+  
       if (response.status === 200) {
-        const audioUrl = URL.createObjectURL(new Blob([response.data]));
+        const audioUrl = URL.createObjectURL(new Blob([response.data])); // Create a URL for the audio blob
         const newScriptAudio = new Audio(audioUrl);
-        await playAudioInstance(newScriptAudio); // Play the audio and wait for it to finish
+        await playAudioInstance(newScriptAudio); // Play the audio
       } else {
         console.error("Failed to generate audio");
       }
@@ -199,6 +199,7 @@ function App() {
       console.error("Error generating audio:", error);
     }
   };
+  
 
 
   const playAudio = async (fileName) => {
