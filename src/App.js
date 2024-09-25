@@ -187,7 +187,7 @@ function App() {
         params: { text_prompt: textPrompt, file_name: fileName },
         responseType: 'blob' // Receive the audio as a blob
       });
-  
+
       if (response.status === 200) {
         const audioUrl = URL.createObjectURL(new Blob([response.data])); // Create a URL for the audio blob
         const newScriptAudio = new Audio(audioUrl);
@@ -199,7 +199,7 @@ function App() {
       console.error("Error generating audio:", error);
     }
   };
-  
+
 
 
   const playAudio = async (fileName) => {
