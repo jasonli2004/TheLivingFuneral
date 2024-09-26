@@ -7,26 +7,9 @@ const LastWordsForm = () => {
     const [isSubmitted, setIsSubmitted] = useState(false); // State to control visibility
     const [error, setError] = useState(null); // For error handling
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitted(true);
-
-        try {
-            // Send the last words to the backend (replace with appropriate endpoint)
-            const response = await axios.post('https://livingfuneralnext.vercel.app/api/add-answers', {
-                line: lastWords,
-            });
-
-            if (response.status === 200) {
-                console.log('Last words submitted successfully');
-            } else {
-                console.error('Failed to submit last words');
-                setError('Failed to submit last words');
-            }
-        } catch (error) {
-            console.error('Error submitting last words:', error);
-            setError('Error submitting last words');
-        }
     };
 
     return (
