@@ -45,26 +45,26 @@ function App() {
     setUserData(newUserData); // Update the state
 
     if (step === 1) {
-      await generateAndPlayAudio(
-        `Hi, ${newUserData.name}, it’s a pleasure to meet you. To know you a little better, I want you to think about your whole life till this very moment, what do you consider to be the three most important things in your life? Go ahead and enter your answers.`,
-        "three.mp3"
-      );
+      // await generateAndPlayAudio(
+      //   `Hi, ${newUserData.name}, it’s a pleasure to meet you. To know you a little better, I want you to think about your whole life till this very moment, what do you consider to be the three most important things in your life? Go ahead and enter your answers.`,
+      //   "three.mp3"
+      // );
     } else if (step === 2) {
-      await playAudio("choice.mp3");
+      // await playAudio("choice.mp3");
     } else if (step === 3) {
       const choiceAudioText = newUserData.choice === 'die'
         ? `You chose to die tomorrow. Although this is quite unlikely, but You never know which will come first: your tomorrow, or your end..... We all gonna die. But, for you, ${newUserData.name}, you are going to die 'tomorrow'. Yes TOMORROW. Now you have 24 hours before you die tomorrow.`
         : `You chose to live forever. While living forever might seem desirable, the fact is that you can’t live forever, at least it’s not possible with the technology we have now. So death is inevitable, and you are going to die. And ${newUserData.name}, you are going to die 'Tomorrow'.`;
-      await generateAndPlayAudio(choiceAudioText, newUserData.choice === 'die' ? "die.mp3" : "live.mp3");
-      await playAudio("last.mp3");
+      // await generateAndPlayAudio(choiceAudioText, newUserData.choice === 'die' ? "die.mp3" : "live.mp3");
+      // await playAudio("last.mp3");
     } else if (step === 4) {
-      await playAudio('go.mp3');
+      // await playAudio('go.mp3');
     } else if (step === 5) {
-      await generateAndPlayAudio(
-        `${newUserData.name} passed away on November 19th, 2023. Now… the first stage of your death is completed.`,
-        "passed.mp3"
-      );
-      await playAudio("survey.mp3");
+      // await generateAndPlayAudio(
+      //   `${newUserData.name} passed away on November 19th, 2023. Now… the first stage of your death is completed.`,
+      //   "passed.mp3"
+      // );
+      // await playAudio("survey.mp3");
     }
     else if (step === 6) {
       const prompt = `
