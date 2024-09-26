@@ -95,66 +95,35 @@ function App() {
     else if (step === 8) {
       console.log(`${newUserData.consent}`);
       if (newUserData.consent === "Yes") {
-        // Make a POST request to append lines to the file
-        fetch('http://localhost:5001/add-answers', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ line: `${newUserData.secondThing}\n` }), // Send the current line
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error('Failed to add line');
-            }
-            return response.text();
+        const addLine = (line) => {
+          return fetch('https://the-living-funeral-backend.vercel.app/api/add-answers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ line: `${line}\n` }), // Send the current line
           })
-          .then((message) => {
-            console.log(message);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-        fetch('http://localhost:5001/add-answers', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ line: `${newUserData.firstThing}\n` }), // Send the current line
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error('Failed to add line');
-            }
-            return response.text();
-          })
-          .then((message) => {
-            console.log(message);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-        fetch('https://the-living-funeral-backend.vercel.app:5001/add-answers', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ line: `${newUserData.thirdThing}\n` }), // Send the current line
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error('Failed to add line');
-            }
-            return response.text();
-          })
-          .then((message) => {
-            console.log(message);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error('Failed to add line');
+              }
+              return response.text();
+            })
+            .then((message) => {
+              console.log(message);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        };
+
+        // Call the function for each line
+        addLine(newUserData.secondThing);
+        addLine(newUserData.firstThing);
+        addLine(newUserData.thirdThing);
       }
     }
+
 
     setStep((prevStep) => prevStep + 1); // Move to the next step
   };
