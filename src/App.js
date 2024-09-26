@@ -84,6 +84,7 @@ function App() {
       Incorporate these elements creatively and make the eulogy deeply personal and touching. (no need for a title)
       `;
       const result = await getChatCompletion(prompt);
+      console.log(result);
 
       await generateAndPlayAudio(result, "eulogy.mp3");
       await playAudio("lastword.mp3");
