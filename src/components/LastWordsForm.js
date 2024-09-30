@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import './LastWordsForm.css';
 import axios from 'axios'; // Import axios for making requests
 
-const LastWordsForm = () => {
+// LastWordsForm.js
+const LastWordsForm = ({ onSubmit }) => {
     const [lastWords, setLastWords] = useState('');
-    const [isSubmitted, setIsSubmitted] = useState(false); // State to control visibility
-    const [error, setError] = useState(null); // For error handling
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitted(true);
+
+        // Move to the next step by calling the onSubmit function
+        onSubmit({ lastWords }); // Pass last words as part of the data
     };
 
     return (
