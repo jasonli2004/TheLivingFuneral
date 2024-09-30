@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Analytics } from "@vercel/analytics/react"
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'; // Import Router and related components
 import IntroForm from './components/IntroForm';
 import ThreeWishesForm from './components/ThreeWishesForm';
@@ -196,6 +197,7 @@ function App() {
 
   return (
     <div className="App">
+      <Analytics />
       <p className='credit'>Video Credit: Mellow Psychedelic Journey - Calming & Beautiful, Good For You.</p>
       <div id="video-container">
         <iframe id="background-video" src="https://www.youtube.com/embed/ICmWwxaTmB8?autoplay=1&mute=1&loop=1&playlist=ICmWwxaTmB8&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
