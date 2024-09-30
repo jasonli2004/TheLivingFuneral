@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './LastWordsForm.css';
-import axios from 'axios'; // Import axios for making requests
+import axios from 'axios';
 
-// LastWordsForm.js
 const LastWordsForm = ({ onSubmit }) => {
     const [lastWords, setLastWords] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -12,8 +11,7 @@ const LastWordsForm = ({ onSubmit }) => {
         e.preventDefault();
         setIsSubmitted(true);
 
-        // Move to the next step by calling the onSubmit function
-        onSubmit({ lastWords }); // Pass last words as part of the data
+        onSubmit({ lastWords });
     };
 
     return (

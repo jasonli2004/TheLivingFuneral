@@ -16,10 +16,10 @@ const Timer = () => {
         top: '5px',
         right: '5px',
         fontFamily: "'Courier New', Courier, monospace",
-        fontSize: '0.8rem', // Default smaller size
+        fontSize: '0.8rem',
         color: '#f8f8f2',
         backgroundColor: 'rgba(40, 42, 54, 0.3)',
-        padding: '5px 10px', // Reduced padding
+        padding: '5px 10px',
         borderRadius: '8px',
         textAlign: 'center',
         boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.70)',
@@ -29,13 +29,13 @@ const Timer = () => {
     const responsiveTimerStyle = {
         ...timerStyle,
         '@media (min-width: 768px)': {
-            fontSize: '0.6rem', // Larger font for tablets and up
-            padding: '8px 12px', // Slightly larger padding
+            fontSize: '0.6rem',
+            padding: '8px 12px',
             top: '10px',
             right: '10px',
         },
         '@media (min-width: 1024px)': {
-            fontSize: '0.9rem', // Larger font for desktops
+            fontSize: '0.9rem',
             padding: '10px 15px',
             top: '10px',
             right: '10px',

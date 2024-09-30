@@ -59,11 +59,8 @@ function SurveyForm({ onSubmit }) {
             <Container className="container">
                 <h3>Survey Form</h3>
 
-                {/* Alert section with fixed position and z-index */}
-
 
                 <Form onSubmit={handleSubmit}>
-                    {/* Rest of the form fields */}
                     <Form.Group controlId="formFuneralDate">
                         <Form.Label>Funeral Date:</Form.Label>
                         <Form.Control

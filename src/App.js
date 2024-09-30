@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Analytics } from "@vercel/analytics/react"
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'; // Import Router and related components
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import IntroForm from './components/IntroForm';
 import ThreeWishesForm from './components/ThreeWishesForm';
 import ChoiceForm from './components/ChoiceForm';
@@ -11,7 +11,7 @@ import SurveyForm from './components/SurveyForm';
 import LastWordsForm from './components/LastWordsForm';
 import ThankYouComponent from './components/ThankYou';
 import './App.css';
-import { getChatCompletion } from './openaiService';  // Import the function
+import { getChatCompletion } from './openaiService';
 import { Container } from 'react-bootstrap';
 import ConsentForm from './components/ConsentForm';
 import Timer from './components/Timer';
@@ -27,7 +27,7 @@ function App() {
   const [userData, setUserData] = useState({});
   const [scriptAudio, setScriptAudio] = useState(null);
   const [value, setValue] = useState(new Date());
-  const navigate = useNavigate(); // Move the useNavigate hook here
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
 
 
   const handleGalleryClick = () => {
-    navigate('/gallery'); // Use navigate here
+    navigate('/gallery');
   };
 
   const handleNextStep = async (data) => {
@@ -257,7 +257,6 @@ function AppWrapper() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/gallery" element={<WordGallery />} />
-        {/* Add more routes as needed */}
       </Routes>
     </Router>
   );

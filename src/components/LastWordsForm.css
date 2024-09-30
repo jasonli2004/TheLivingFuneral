@@ -4,7 +4,6 @@
     align-items: center;
     margin-top: 50px;
     font-family: 'Dancing Script', cursive;
-    /* Handwritten font */
 }
 
 .last-words-label {
@@ -21,7 +20,6 @@
     border: none;
     border-radius: 10px;
     background-image: url('https://www.transparenttextures.com/patterns/old-mathematics.png');
-    /* Letter-like texture */
     background-color: #f5f5dc;
     font-family: 'Dancing Script', cursive;
     font-size: 20px;

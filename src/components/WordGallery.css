@@ -1,4 +1,3 @@
-/* Add Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@400;700&display=swap');
 
 .word-gallery-container {
@@ -112,17 +111,13 @@ h2 {
     animation: moveBackground 10s infinite linear;
 }
 
-/* Add this to WordGallery.css */
 .return-button {
     position: absolute;
-    /* background-color: #ffffff; */
     color: #333;
     border: none;
     border-radius: 5px;
-    /* padding: 10px 20px; */
     font-size: 13px;
     cursor: pointer;
-    /* margin-top: 20px; */
     top: 1%;
     left: 1%;
     width: 3%;
@@ -130,10 +125,6 @@ h2 {
     z-index: 2;
 }
 
-.return-button:hover {
-    /* background-color: #fcc96c;
-    color: #fff; */
-}
 
 
 @keyframes moveBackground {

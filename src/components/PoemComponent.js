@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './PoemComponent.css'; // Ensure you create this CSS file for styling
+import './PoemComponent.css';
 
 const PoemComponent = ({ onClick }) => {
     const [isVisible, setIsVisible] = useState(true);
@@ -12,7 +12,7 @@ const PoemComponent = ({ onClick }) => {
     if (!isVisible) return null;
 
     return (
-        <div className="poem-container"> {/* Changed from Container to div */}
+        <div className="poem-container">
             <h2>Facing the Sea With Spring Blossoms</h2>
             <p>- Hai Zi</p>
             <p>From tomorrow on, I will be a happy man.<br />
