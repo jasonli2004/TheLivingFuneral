@@ -1,73 +1,44 @@
+# The Living Funeral 🖤
 
-Deployed on https://www.thelivingfuneral.art
+**The Living Funeral** is an interactive web-based extension of a physical art installation, designed to provoke deep reflection through AI-driven experiences. The project explores the profound themes of life, death, and self-reflection, immersing users in a unique and thought-provoking journey.
 
-# Getting Started with Create React App
+🌐 **Explore it here:** [The Living Funeral](https://www.thelivingfuneral.art)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## ✨ Experience
 
-In the project directory, you can run:
+The journey begins with a series of reflective questions, such as:
 
-### `npm start`
+- *"What are the three most important things in your life?"*
+  
+Based on the user's responses, the interactions adapt dynamically, creating a highly personalized experience. The user progresses through **three stages of death**, each offering an opportunity to reflect on their life path and mortality.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the final stage, the experience culminates in a **customized eulogy**, generated using AI and based on the user's earlier answers. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Technology Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **ChatGPT (GPT-4 Vision/Completion Model):** Drives adaptive, conversational interactions.
+- **ElevenLabs Text-to-Speech API:** Adds an authentic, immersive narration experience.
+- **React:** Powers the modern, dynamic frontend.
+- **Next.js:** Handles the scalable backend.
+- **Vercel:** For seamless deployment.
+- **Backblaze B2:** For efficient cloud storage.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎭 About the Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project aims to blend art and technology, offering participants a deeply personal and introspective experience. By simulating the end of life, it provides a unique space to consider one's values, choices, and legacy.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Deployment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The Living Funeral is deployed on **Vercel**, with **Backblaze B2** utilized for storage. The seamless integration of cutting-edge AI tools ensures a smooth and engaging user experience.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Step into this one-of-a-kind journey and reflect on the path of life and its inevitable conclusion.
