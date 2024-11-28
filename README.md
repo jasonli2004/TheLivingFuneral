@@ -1,46 +1,53 @@
-# The Living Funeral 🖤
+# 🖤 The Living Funeral 
 
-**The Living Funeral** is an interactive web-based extension of a physical art installation, designed to provoke deep reflection through AI-driven experiences. The project explores the profound themes of life, death, and self-reflection, immersing users in a unique and thought-provoking journey.
-
-🌐 **Explore it here:** [The Living Funeral](https://www.thelivingfuneral.art)
-<img src="./welcome.png" alt="Welcome Image" width="500" height="300">
-
+**The Living Funeral** is an interactive web-based extension of a physical art installation, designed to provoke deep reflection through AI-driven experiences. The project explores profound themes of life, death, and self-reflection, immersing users in a thought-provoking journey.
 
 ---
 
-## ✨ Experience
+<img src="./welcome.png" alt="Welcome Image" style="display: block; margin: 0 auto; max-width: 100%; height: auto;">
 
-The journey begins with a series of reflective questions, such as:
+---
 
-- *"What are the three most important things in your life?"*
-  
-Based on the user's responses, the interactions adapt dynamically, creating a highly personalized experience. The user progresses through **three stages of death**, each offering an opportunity to reflect on their life path and mortality.
+## 🌐 Explore the Project
 
-In the final stage, the experience culminates in a **customized eulogy**, generated using AI and based on the user's earlier answers. 
+👉 **[Visit The Living Funeral](https://www.thelivingfuneral.art)** to experience it yourself.
+
+---
+
+## ✨ Experience the Journey
+
+The journey begins with reflective questions such as:
+
+> *"What are the three most important things in your life?"*
+
+Your responses guide the narrative through **three stages of death**, each encouraging deep introspection. The experience concludes with a **customized eulogy**, generated using AI and tailored to your answers.
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **ChatGPT (GPT-4 Vision/Completion Model):** Drives adaptive, conversational interactions.
-- **ElevenLabs Text-to-Speech API:** Adds an authentic, immersive narration experience.
-- **React:** Powers the modern, dynamic frontend.
-- **Next.js:** Handles the scalable backend.
-- **Vercel:** For seamless deployment.
-- **Backblaze B2:** For efficient cloud storage.
+This immersive project is powered by cutting-edge technologies:
+
+- **ChatGPT (GPT-4 Vision/Completion Model):** Powers adaptive, conversational interactions.
+- **ElevenLabs Text-to-Speech API:** Provides authentic, immersive narration.
+- **React:** Creates a modern, dynamic frontend.
+- **Next.js:** Supports the scalable backend.
+- **Vercel:** Ensures seamless deployment.
+- **Backblaze B2:** Enables efficient cloud storage.
 
 ---
 
 ## 🎭 About the Project
 
-This project aims to blend art and technology, offering participants a deeply personal and introspective experience. By simulating the end of life, it provides a unique space to consider one's values, choices, and legacy.
+**The Living Funeral** blends art and technology to offer a deeply personal, introspective experience. By simulating the end of life, it provides participants a unique space to reflect on their values, choices, and legacy.
 
 ---
 
 ## 🚀 Deployment
 
-The Living Funeral is deployed on **Vercel**, with **Backblaze B2** utilized for storage. The seamless integration of cutting-edge AI tools ensures a smooth and engaging user experience.
+Deployed on **Vercel**, with **Backblaze B2** managing storage, The Living Funeral integrates advanced AI tools for a smooth, engaging experience.
 
 ---
 
-Step into this one-of-a-kind journey and reflect on the path of life and its inevitable conclusion.
+🌟 **Step into this one-of-a-kind journey and reflect on life’s path and its inevitable conclusion.**
+
