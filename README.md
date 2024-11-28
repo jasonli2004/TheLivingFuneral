@@ -3,6 +3,8 @@
 **The Living Funeral** is an interactive web-based extension of a physical art installation, designed to provoke deep reflection through AI-driven experiences. The project explores the profound themes of life, death, and self-reflection, immersing users in a unique and thought-provoking journey.
 
 🌐 **Explore it here:** [The Living Funeral](https://www.thelivingfuneral.art)
+<img src="./welcome.png" alt="Welcome Image" width="500" height="300">
+
 
 ---
 
